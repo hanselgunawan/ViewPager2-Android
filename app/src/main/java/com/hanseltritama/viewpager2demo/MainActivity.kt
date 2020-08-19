@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.viewpager2.widget.ViewPager2
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.item_page.*
 import me.relex.circleindicator.CircleIndicator3
 
 class MainActivity : AppCompatActivity() {
@@ -23,6 +24,14 @@ class MainActivity : AppCompatActivity() {
 
         val indicator = findViewById<CircleIndicator3>(R.id.circle_indicator)
         indicator.setViewPager(my_view_pager)
+
+        btn_fake_swipe.setOnClickListener {
+            my_view_pager.apply {
+                beginFakeDrag()
+                fakeDragBy(-200f)
+                endFakeDrag()
+            }
+        }
     }
 
     private fun addToList(title: String, description: String, image: Int) {
